@@ -1,0 +1,17 @@
+<script>
+  function caesarCipherEncryptor(string, key) {
+    const newChararray = []
+    const newKey = key % 26
+    for (let i = 0; i < string.length; i++) {
+      let newCode = string[i].charCodeAt() + newKey
+      // console.log(newCode)
+      if (newCode > 122) {
+        newChararray.push(String.fromCharCode(96 + (newCode % 122)))
+      } else {
+        newChararray.push(String.fromCharCode(newCode))
+      }
+    }
+    return newChararray.join('')
+  }
+  caesarCipherEncryptor('yza', 10)
+</script>
