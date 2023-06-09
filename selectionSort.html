@@ -1,0 +1,19 @@
+<script>
+  function selectionSort(array) {
+    // Write your code here.
+
+    for (let i = 0; i < array.length - 1; i++) {
+      let minimumIdx = i
+      for (let j = i + 1; j < array.length; j++) {
+        if (array[minimumIdx] > array[j]) {
+          minimumIdx = j
+        }
+      }
+      let temp = array[i]
+      array[i] = array[minimumIdx]
+      array[minimumIdx] = temp
+    }
+    console.log(array)
+    return array
+  }
+</script>
