@@ -1,14 +1,27 @@
 <script>
   function isPalindrome(string) {
-    let left = 0
-    let right = string.length - 1
+    // let left = 0
+    // let right = string.length - 1
 
-    while (left < right) {
+    // while (left < right) {
+    //   if (string[left] !== string[right]) {
+    //     return false
+    //   }
+    //   left++
+    //   right--
+    // }
+    // return true
+
+    // add using for loop
+
+    for (
+      let left = 0, right = string.length - 1;
+      left < string.length;
+      left++, right--
+    ) {
       if (string[left] !== string[right]) {
         return false
       }
-      left++
-      right--
     }
     return true
   }
