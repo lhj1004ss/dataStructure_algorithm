@@ -1,39 +1,22 @@
 <script>
   function generateDocument(characters, document) {
     // Write your code here.
-    let charMap = new Map()
-    let docMap = new Map()
+    const hashMap = {}
 
-    for (let i = 0; i < document.length; i++) {
-      if (docMap.has([document[i]])) {
-        docMap[document[i]]++
-      } else {
-        docMap[document[i]] = 1
-      }
-    }
     for (let i = 0; i < characters.length; i++) {
-      if (charMap.has([characters[i]])) {
-        charMap[characters[i]]++
+      if (hashMap[characters[i]]) {
+        hashMap[characters[i]]++
       } else {
-        charMap[characters[i]] = 1
+        hashMap[characters[i]] = 1
       }
     }
-    // console.log('char map', charMap);
-    // console.log('doc map', docMap);
+    console.log('before', hashMap)
 
-    for (const docKey in docMap) {
-      for (const charKey in charMap) {
-        // console.log(charMap[charKey], docMap[docKey])
-        console.log('has', docMap.has('B'))
-        if (docMap.has(charKey)) {
-          if (charMap[charKey] >= docMap[docKey]) {
-            console.log(charMap[charKey], docMap[docKey])
-            return true
-          }
-        } else {
-          return false
-        }
-      }
+    for (const character of document) {
+      if (!(character in hashMap) || hashMap[character] === 0) return false
+      hashMap[character]--
     }
+    console.log('after', hashMap)
+    return true
   }
 </script>
