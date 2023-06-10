@@ -1,0 +1,21 @@
+<script>
+  let map = {}
+  for (let i = 0; i < strings.length; i++) {
+    let chars = strings[i].split('')
+    for (let i = 0; i < chars.length; i++) {
+      if (map[chars[i]]) {
+        map[chars[i]]++
+      } else {
+        map[chars[i]] = 1
+      }
+    }
+  }
+  let commonCharsArray = []
+  for (const key in map) {
+    if (map[key] >= strings.length) {
+      commonCharsArray.push(key)
+    }
+  }
+  console.log('map', map)
+  return commonCharsArray
+</script>
