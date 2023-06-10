@@ -1,21 +1,27 @@
 <script>
-  let map = {}
-  for (let i = 0; i < strings.length; i++) {
-    let chars = strings[i].split('')
-    for (let i = 0; i < chars.length; i++) {
-      if (map[chars[i]]) {
-        map[chars[i]]++
-      } else {
-        map[chars[i]] = 1
+  function commonCharacters(strings) {
+    // Write your code here.
+    // find smallest length of string' and put it to Set()
+
+    let smallest = strings[0]
+    for (let i = 0; i < strings.length; i++) {
+      if (smallest.length > strings[i].length) {
+        smallest = strings[i]
       }
     }
-  }
-  let commonCharsArray = []
-  for (const key in map) {
-    if (map[key] >= strings.length) {
-      commonCharsArray.push(key)
+
+    const potentialCommonChars = new Set(smallest)
+    console.log(potentialCommonChars)
+    for (let i = 0; i < strings.length; i++) {
+      const compareCommonChars = new Set(strings[i])
+
+      for (const char of potentialCommonChars) {
+        if (!compareCommonChars.has(char)) {
+          potentialCommonChars.delete(char)
+        }
+      }
     }
+    console.log(potentialCommonChars)
+    return Array.from(potentialCommonChars)
   }
-  console.log('map', map)
-  return commonCharsArray
 </script>
