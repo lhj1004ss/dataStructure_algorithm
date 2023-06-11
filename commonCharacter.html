@@ -1,0 +1,27 @@
+<script>
+  function commonCharacters(strings) {
+    // Write your code here.
+    // find smallest length of string' and put it to Set()
+
+    let smallest = strings[0]
+    for (let i = 0; i < strings.length; i++) {
+      if (smallest.length > strings[i].length) {
+        smallest = strings[i]
+      }
+    }
+
+    const potentialCommonChars = new Set(smallest)
+    console.log(potentialCommonChars)
+    for (let i = 0; i < strings.length; i++) {
+      const compareCommonChars = new Set(strings[i])
+
+      for (const char of potentialCommonChars) {
+        if (!compareCommonChars.has(char)) {
+          potentialCommonChars.delete(char)
+        }
+      }
+    }
+    console.log(potentialCommonChars)
+    return Array.from(potentialCommonChars)
+  }
+</script>

@@ -1,0 +1,21 @@
+<script>
+  function semordnilap(words) {
+    // Write your code here.
+
+    let wordSet = new Set(words)
+
+    const array = []
+    for (const word of words) {
+      let reverse = word.split('').reverse().join('')
+      console.log('reverse', reverse, 'word', word)
+      // if reverse === word it's palindrome not semordnilap
+      if (wordSet.has(reverse) && reverse !== word) {
+        array.push([word, reverse])
+        wordSet.delete(word)
+        wordSet.delete(reverse)
+      }
+    }
+    console.log(array)
+    return array
+  }
+</script>

@@ -1,29 +1,23 @@
 <script>
   function runLengthEncoding(string) {
+    // Write your code here.
     let array = []
     let count = 1
-    for (let i = 0; i < string.length; i++) {
-      // AAAAAAAAA A AAA BB CCCC DD
-      console.log(string[i])
-      if (i > 0 && string[i] === string[i - 1]) {
-        if (count === 9) {
-          console.log('if', count)
-          array.push(count, string[i - 1])
-          count = 0
-        }
-        count++
-        // console.log(string[i])
-      } else if (i > 0 && string[i] !== string[i - 1]) {
-        // count=1;
-        console.log('else ', count)
+    for (let i = 1; i < string.length; i++) {
+      if (string[i] !== string[i - 1] || count === 9) {
         array.push(count, string[i - 1])
-        count = 1
+        count = 0
       }
-      if (i === string.length - 1) {
-        array.push(count, string[i - 1])
-      }
+      count++
+
+      // if(i === string.length - 1){
+      //   array.push(count,string[i])
+      // }
     }
-    console.log(array)
+    // to handle when count is string is " " 1 empty length
+    array.push(count, string[string.length - 1])
+    console.log(array, array.join(''))
     return array.join('')
   }
+  runLengthEncoding('AAAAAAAAAAAAAAAAABBBCCD')
 </script>

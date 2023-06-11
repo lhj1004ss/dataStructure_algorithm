@@ -1,0 +1,22 @@
+<script>
+  function generateDocument(characters, document) {
+    // Write your code here.
+    const hashMap = {}
+
+    for (let i = 0; i < characters.length; i++) {
+      if (hashMap[characters[i]]) {
+        hashMap[characters[i]]++
+      } else {
+        hashMap[characters[i]] = 1
+      }
+    }
+    console.log('before', hashMap)
+
+    for (const character of document) {
+      if (!(character in hashMap) || hashMap[character] === 0) return false
+      hashMap[character]--
+    }
+    console.log('after', hashMap)
+    return true
+  }
+</script>
