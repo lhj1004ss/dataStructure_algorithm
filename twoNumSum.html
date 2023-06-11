@@ -1,0 +1,18 @@
+<script>
+  function twoNumberSum(array, targetSum) {
+    // Write your code here.
+
+    let hashMap = {}
+    for (let i = 0; i < array.length; i++) {
+      //4, 6
+      let complimentary = targetSum - array[i]
+      if (complimentary in hashMap) {
+        return [complimentary, array[i]]
+      } else {
+        // hashMap.set(array[i], i);
+        hashMap[array[i]] = i
+      }
+    }
+    return []
+  }
+</script>
