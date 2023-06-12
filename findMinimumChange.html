@@ -1,0 +1,17 @@
+<script>
+  function nonConstructibleChange(coins) {
+    // Write your code here.
+    coins.sort((a, b) => a - b)
+    console.log(coins)
+    let minimumChange = 0
+
+    //
+    for (let i = 0; i < coins.length; i++) {
+      if (minimumChange + 1 < coins[i]) {
+        return minimumChange + 1
+      }
+      minimumChange += coins[i]
+    }
+    return minimumChange + 1
+  }
+</script>
