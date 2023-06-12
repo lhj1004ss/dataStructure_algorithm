@@ -1,0 +1,33 @@
+<script>
+  function tournamentWinner(competitions, results) {
+    // Write your code here.
+
+    let score = {}
+    let winner = { name: '', score: 0 }
+
+    for (let i = 0; i < competitions.length; i++) {
+      console.log(competitions[i][0], results[i])
+      // console.log('aa',score[competitions[i]])
+
+      if (results[i] === 0) {
+        score[competitions[i][1]] = (score[competitions[i][1]] || 0) + 3
+      } else {
+        score[competitions[i][0]] = (score[competitions[i][0]] || 0) + 3
+      }
+      // if(score[competitions[i][0]])
+
+      if (score[competitions[i][1]] > winner.score) {
+        winner.score = score[competitions[i][1]]
+        winner.name = competitions[i][1]
+      }
+      if (score[competitions[i][0]] > winner.score) {
+        winner.score = score[competitions[i][0]]
+        winner.name = competitions[i][0]
+      }
+    }
+    console.log('winner', winner)
+    console.log('score', score)
+
+    return winner.name
+  }
+</script>
