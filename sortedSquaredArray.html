@@ -1,0 +1,23 @@
+<script>
+  function sortedSquaredArray(array) {
+    // Write your code here.
+    let squareOfOrignalArray = []
+
+    let left = 0
+    let right = array.length - 1
+    let end = array.length - 1
+    while (left <= right) {
+      console.log(Math.abs(array[left]), Math.abs(array[right]))
+      if (Math.abs(array[left]) > Math.abs(array[right])) {
+        squareOfOrignalArray[end] = array[left] * array[left]
+        left++
+      } else {
+        squareOfOrignalArray[end] = array[right] * array[right]
+        right--
+      }
+      end--
+    }
+    return squareOfOrignalArray
+    console.log(squareOfOrignalArray)
+  }
+</script>
