@@ -1,0 +1,24 @@
+<script>
+  function classPhotos(redShirtHeights, blueShirtHeights) {
+    redShirtHeights.sort((a, b) => b - a)
+
+    blueShirtHeights.sort((a, b) => b - a)
+
+    console.log('red', redShirtHeights)
+    console.log('blue', blueShirtHeights)
+    const frontRow = blueShirtHeights[0] < redShirtHeights[0] ? 'BLUE' : 'RED'
+
+    for (let i = 0; i < redShirtHeights.length; i++) {
+      if (frontRow === 'RED') {
+        if (redShirtHeights[i] >= blueShirtHeights[i]) {
+          return false
+        }
+      } else {
+        if (redShirtHeights[i] <= blueShirtHeights[i]) {
+          return false
+        }
+      }
+    }
+    return true
+  }
+</script>
