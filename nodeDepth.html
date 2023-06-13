@@ -1,0 +1,33 @@
+<script>
+  function nodeDepths(root) {
+    // Write your code here.
+    //recursive way
+    if (root === null) return false
+
+    return (
+      depth +
+      nodeDepths(root.left, depth + 1) +
+      nodeDepths(root.right, depth + 1)
+    )
+
+    // iterative way
+    let current = root
+    const stack = [[current, (depth = 0)]]
+    // console.log(stack)
+    let sum = 0
+    while (stack.length) {
+      ;[current, depth] = stack.pop()
+      if (current === null) {
+        console.log(current, depth)
+        continue
+      }
+      sum += depth
+      console.log(sum, depth)
+
+      stack.push([current.left, depth + 1])
+      stack.push([current.right, depth + 1])
+    }
+    console.log(sum)
+    return sum
+  }
+</script>
