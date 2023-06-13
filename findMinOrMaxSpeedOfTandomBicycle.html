@@ -14,4 +14,17 @@
     }
     return sum
   }
+  function reverseArray(array) {
+    console.log(array)
+    let right = array.length - 1
+    let left = 0
+    while (left < right) {
+      let temp = array[left]
+      array[left] = array[right]
+      array[right] = temp
+
+      left++
+      right--
+    }
+  }
 </script>
