@@ -1,0 +1,16 @@
+<script>
+  function minimumWaitingTime(queries) {
+    // Write your code here.
+    queries.sort((a, b) => a - b)
+    console.log(queries)
+    let minimumWaitingTime = 0
+
+    for (let i = 0; i < queries.length; i++) {
+      minimumWaitingTime += queries[i] * (queries.length - i - 1)
+      console.log(queries[i] * (queries.length - i - 1))
+    }
+
+    console.log(minimumWaitingTime)
+    return minimumWaitingTime
+  }
+</script>
