@@ -1,0 +1,15 @@
+<script>
+  function transposeMatrix(matrix) {
+    // Write your code here.
+    const flippedMatrix = []
+    for (let col = 0; col < matrix[0].length; col++) {
+      const newRow = []
+      for (let row = 0; row < matrix.length; row++) {
+        newRow.push(matrix[row][col])
+        console.log(matrix[row][col])
+      }
+      flippedMatrix.push(newRow)
+    }
+    return flippedMatrix
+  }
+</script>
