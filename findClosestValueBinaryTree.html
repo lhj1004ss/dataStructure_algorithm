@@ -1,0 +1,20 @@
+<script>
+  function findClosestValueInBst(tree, target) {
+    // Write your code here.
+    console.log(tree)
+    let closest = Infinity
+    let current = tree
+    while (current !== null) {
+      if (Math.abs(target - closest) > Math.abs(target - current.value)) {
+        closest = current.value
+      }
+
+      if (target > current.value) {
+        current = current.right
+      } else {
+        current = current.left
+      }
+    }
+    return closest
+  }
+</script>
