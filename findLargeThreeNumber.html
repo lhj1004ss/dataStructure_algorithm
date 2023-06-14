@@ -1,0 +1,19 @@
+<script>
+  function findThreeLargestNumbers(array) {
+    const large = [null, null, null]
+    for (const num of array) {
+      if (num > large[2] || large[2] === null) {
+        large[0] = large[1]
+        large[1] = large[2]
+        large[2] = num
+        console.log(num)
+      } else if (num > large[1] || large[1] === null) {
+        large[0] = large[1]
+        large[1] = num
+      } else if (num > large[0] || large[0] === null) {
+        large[0] = num
+      }
+    }
+    return large
+  }
+</script>
