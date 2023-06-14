@@ -1,0 +1,30 @@
+<script>
+  function middleNode(linkedList) {
+    // using counter;
+    // let current = linkedList;
+    // let count = 0;
+    // while(current.next){
+
+    //   count++;
+    //   current = current.next
+
+    // }
+    // console.log(count)
+
+    // let middleNode = linkedList
+    // for(let i = 0; i <Math.floor(count/2); i++){
+    //   middleNode = middleNode.next;
+    // }
+    // console.log(middleNode)
+    // return middleNode;
+
+    // using pointers;
+    let slow = linkedList
+    let fast = linkedList
+    while (fast && fast.next) {
+      slow = slow.next
+      fast = fast.next.next
+    }
+    return slow
+  }
+</script>
