@@ -1,19 +1,17 @@
 <script>
   function firstNonRepeatingCharacter(string) {
     // Write your code here.
-
-    const hashMap = {}
+    let hash = {}
 
     for (let i = 0; i < string.length; i++) {
-      if (hashMap[string[i]]) {
-        hashMap[string[i]]++
-      } else {
-        hashMap[string[i]] = 1
-      }
+      hash[string[i]] = (hash[string[i]] || 0) + 1
     }
+    console.log(hash)
 
     for (let i = 0; i < string.length; i++) {
-      if (hashMap[string[i]] === 1) return i
+      if (hash[string[i]] === 1) {
+        return i
+      }
     }
     return -1
   }
