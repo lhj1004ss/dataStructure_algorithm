@@ -10,45 +10,27 @@
     let secondLeft = 0
     let smallest = Infinity
     let currentSmallest = 0
-    const result = []
+    let result = []
 
     while (firstLeft < arrayOne.length && secondLeft < arrayTwo.length) {
-      console.log(arrayOne[firstLeft], arrayTwo[secondLeft])
+      let num1 = arrayOne[firstLeft]
+      let num2 = arrayTwo[secondLeft]
+      currentSmallest = Math.abs(num1) - Math.abs(num2)
 
-      if (Math.abs(arrayOne[firstLeft]) === Math.abs(arrayTwo[secondLeft])) {
-        result[0] = arrayOne[firstLeft]
-        result[1] = arrayTwo[secondLeft]
-
+      if (Math.abs(num1) === Math.abs(num2)) {
+        result = [num1, num2]
         return result
-      } else if (arrayOne[firstLeft] < arrayTwo[secondLeft]) {
-        currentSmallest =
-          Math.abs(arrayOne[firstLeft]) - Math.abs(arrayTwo[secondLeft])
-        console.log(
-          'currentSmallest <<<<',
-          Math.abs(currentSmallest),
-          Math.abs(arrayOne[firstLeft]),
-          "<<<<',",
-          Math.abs(arrayTwo[secondLeft])
-        )
+      } else if (num1 < num2) {
         if (smallest > Math.abs(currentSmallest)) {
-          result[0] = arrayOne[firstLeft]
-          result[1] = arrayTwo[secondLeft]
+          result = [num1, num2]
+
           smallest = Math.abs(currentSmallest)
         }
         firstLeft++
       } else {
-        currentSmallest =
-          Math.abs(arrayOne[firstLeft]) - Math.abs(arrayTwo[secondLeft])
-        console.log(
-          'currentSmallest >>>',
-          Math.abs(currentSmallest),
-          Math.abs(arrayOne[firstLeft]),
-          '>>>',
-          Math.abs(arrayTwo[secondLeft])
-        )
         if (smallest > Math.abs(currentSmallest)) {
-          result[0] = arrayOne[firstLeft]
-          result[1] = arrayTwo[secondLeft]
+          result = [num1, num2]
+
           smallest = Math.abs(currentSmallest)
         }
         secondLeft++
