@@ -1,0 +1,60 @@
+<script>
+  function smallestDifference(arrayOne, arrayTwo) {
+    // Write your code here.
+    arrayOne.sort((a, b) => a - b)
+    arrayTwo.sort((a, b) => a - b)
+
+    console.log(arrayOne)
+    console.log(arrayTwo)
+    let firstLeft = 0
+    let secondLeft = 0
+    let smallest = Infinity
+    let currentSmallest = 0
+    const result = []
+
+    while (firstLeft < arrayOne.length && secondLeft < arrayTwo.length) {
+      console.log(arrayOne[firstLeft], arrayTwo[secondLeft])
+
+      if (Math.abs(arrayOne[firstLeft]) === Math.abs(arrayTwo[secondLeft])) {
+        result[0] = arrayOne[firstLeft]
+        result[1] = arrayTwo[secondLeft]
+
+        return result
+      } else if (arrayOne[firstLeft] < arrayTwo[secondLeft]) {
+        currentSmallest =
+          Math.abs(arrayOne[firstLeft]) - Math.abs(arrayTwo[secondLeft])
+        console.log(
+          'currentSmallest <<<<',
+          Math.abs(currentSmallest),
+          Math.abs(arrayOne[firstLeft]),
+          "<<<<',",
+          Math.abs(arrayTwo[secondLeft])
+        )
+        if (smallest > Math.abs(currentSmallest)) {
+          result[0] = arrayOne[firstLeft]
+          result[1] = arrayTwo[secondLeft]
+          smallest = Math.abs(currentSmallest)
+        }
+        firstLeft++
+      } else {
+        currentSmallest =
+          Math.abs(arrayOne[firstLeft]) - Math.abs(arrayTwo[secondLeft])
+        console.log(
+          'currentSmallest >>>',
+          Math.abs(currentSmallest),
+          Math.abs(arrayOne[firstLeft]),
+          '>>>',
+          Math.abs(arrayTwo[secondLeft])
+        )
+        if (smallest > Math.abs(currentSmallest)) {
+          result[0] = arrayOne[firstLeft]
+          result[1] = arrayTwo[secondLeft]
+          smallest = Math.abs(currentSmallest)
+        }
+        secondLeft++
+      }
+    }
+    console.log(result)
+    return result
+  }
+</script>
