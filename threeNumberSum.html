@@ -7,6 +7,10 @@
     const newThreeSum = []
 
     for (let i = 0; i < array.length; i++) {
+      // optimazation if current index value is greater than target sum, stop! because array is accending order,
+      if (array[i] >= targetSum) {
+        break
+      }
       let left = i + 1
       let right = array.length - 1
 
