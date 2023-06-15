@@ -1,0 +1,28 @@
+<script>
+  function threeNumberSum(array, targetSum) {
+    // Write your code here.
+
+    array.sort((a, b) => a - b)
+
+    const newThreeSum = []
+
+    for (let i = 0; i < array.length; i++) {
+      let left = i + 1
+      let right = array.length - 1
+
+      while (left < right) {
+        if (array[i] + array[left] + array[right] === targetSum) {
+          newThreeSum.push([array[i], array[left], array[right]])
+          left++
+          right--
+        } else if (array[i] + array[left] + array[right] > targetSum) {
+          right--
+        } else {
+          left++
+        }
+      }
+    }
+    console.log(newThreeSum)
+    return newThreeSum
+  }
+</script>
