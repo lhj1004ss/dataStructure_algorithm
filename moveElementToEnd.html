@@ -1,0 +1,27 @@
+<script>
+  function moveElementToEnd(array, toMove) {
+    // Write your code here.
+
+    let left = 0
+    let right = array.length - 1
+    while (left < right) {
+      if (array[left] === toMove) {
+        if (array[right] === toMove) {
+          right--
+        } else {
+          // let temp = array[right];
+          // array[right] = array[left];
+          // array[left] = temp;
+
+          ;[array[left], array[right]] = [array[right], array[left]]
+
+          left++
+        }
+      } else {
+        left++
+      }
+    }
+    console.log(array)
+    return array
+  }
+</script>
