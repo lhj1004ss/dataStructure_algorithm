@@ -1,19 +1,46 @@
 <script>
+  // function arrayOfProducts(array) {
+  //   // Write your code here.
+  //   const products = []
+  //   for (let i = 0; i < array.length; i++) {
+  //     let runningProduct = 1
+  //     for (let j = 0; j < array.length; j++) {
+  //       if (i !== j) {
+  //         console.log('both', runningProduct, array[j], 'i,j', i, j)
+  //         runningProduct *= array[j]
+  //         //1,4,2
+  //         console.log('running', runningProduct)
+  //       }
+  //     }
+  //     products.push(runningProduct)
+  //     console.log('products', products)
+  //   }
+  //   return products
+  // }
   function arrayOfProducts(array) {
     // Write your code here.
     const products = []
+    const leftProducts = []
+    const rightProducts = []
+
+    let leftRunningProduct = 1
     for (let i = 0; i < array.length; i++) {
-      let runningProduct = 1
-      for (let j = 0; j < array.length; j++) {
-        if (i !== j) {
-          console.log('both', runningProduct, array[j], 'i,j', i, j)
-          runningProduct *= array[j]
-          //1,4,2
-          console.log('running', runningProduct)
-        }
-      }
-      products.push(runningProduct)
-      console.log('products', products)
+      leftProducts[i] = leftRunningProduct
+      leftRunningProduct *= array[i]
+      console.log()
+    }
+
+    let rightRunningProduct = 1
+    for (let i = array.length - 1; i >= 0; i--) {
+      rightProducts[i] = rightRunningProduct
+      rightRunningProduct *= array[i]
+    }
+
+    console.log(leftProducts)
+    console.log(rightProducts)
+
+    for (let i = 0; i < array.length; i++) {
+      products[i] = rightProducts[i] * leftProducts[i]
     }
     return products
   }
