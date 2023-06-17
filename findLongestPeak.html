@@ -1,0 +1,37 @@
+<script>
+  function longestPeak(array) {
+    // Write your code here.
+    let longestPeakLength = 0
+    let index = 1
+    while (index < array.length - 1) {
+      const isPeak =
+        array[index] > array[index + 1] && array[index] > array[index - 1]
+      // find peak
+      if (!isPeak) {
+        index++
+        continue
+      }
+
+      let leftIndex = index - 2
+      while (0 <= leftIndex && array[leftIndex] < array[leftIndex + 1]) {
+        leftIndex--
+      }
+
+      let rightIndex = index + 2
+      while (
+        rightIndex < array.length - 1 &&
+        array[rightIndex - 1] > array[rightIndex]
+      ) {
+        rightIndex++
+      }
+
+      console.log('left right', leftIndex, rightIndex)
+
+      let currentLegnth = rightIndex - leftIndex - 1
+      longestPeakLength = Math.max(currentLegnth, longestPeakLength)
+      console.log(longestPeakLength)
+      index = rightIndex
+    }
+    return longestPeakLength
+  }
+</script>
