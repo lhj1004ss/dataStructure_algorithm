@@ -1,0 +1,28 @@
+<script>
+  function firstDuplicateValue(array) {
+    // Write your code here.
+    // let hash = {};
+    // for(let i = 0; i < array.length; i++){
+
+    //   if(hash[array[i]]){
+    //     hash[array[i]]++
+
+    //     if(hash[array[i]] === 2){
+    //       return array[i]
+    //     }
+
+    //   }else{
+    //     hash[array[i]] = 1;
+    //   }
+
+    // }
+    // return -1
+
+    let set = new Set()
+    for (let i = 0; i < array.length; i++) {
+      if (set.has(array[i])) return array[i]
+      set.add(array[i])
+    }
+    return -1
+  }
+</script>
