@@ -1,0 +1,20 @@
+<script>
+  function arrayOfProducts(array) {
+    // Write your code here.
+    const products = []
+    for (let i = 0; i < array.length; i++) {
+      let runningProduct = 1
+      for (let j = 0; j < array.length; j++) {
+        if (i !== j) {
+          console.log('both', runningProduct, array[j], 'i,j', i, j)
+          runningProduct *= array[j]
+          //1,4,2
+          console.log('running', runningProduct)
+        }
+      }
+      products.push(runningProduct)
+      console.log('products', products)
+    }
+    return products
+  }
+</script>
