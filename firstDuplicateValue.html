@@ -18,10 +18,20 @@
     // }
     // return -1
 
+    //using Set time: O(n) space: O(n)
     let set = new Set()
     for (let i = 0; i < array.length; i++) {
       if (set.has(array[i])) return array[i]
       set.add(array[i])
+    }
+    return -1
+  }
+  //mutate array time: O(n) space: O(1)
+  function firstDuplicateValue(array) {
+    for (let i = 0; i < array.length; i++) {
+      let absoluteValue = Math.abs(array[i])
+      if (array[absoluteValue - 1] < 0) return absoluteValue
+      array[absoluteValue - 1] *= -1
     }
     return -1
   }
