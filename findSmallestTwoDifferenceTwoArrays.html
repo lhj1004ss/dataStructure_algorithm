@@ -40,3 +40,38 @@
     return result
   }
 </script>
+
+<script>
+  function smallestDifference(arrayOne, arrayTwo) {
+    arrayOne.sort((a, b) => a - b)
+    arrayTwo.sort((a, b) => a - b)
+    console.log(arrayOne)
+    console.log(arrayTwo)
+    let smallest = Infinity
+    let firstIndex = 0
+    let secondIndex = 0
+    let currentSmallest = Infinity
+    let result = []
+    while (firstIndex < arrayOne.length && secondIndex < arrayTwo.length) {
+      let num1 = arrayOne[firstIndex]
+      let num2 = arrayTwo[secondIndex]
+
+      if (num1 > num2) {
+        currentSmallest = num1 - num2
+        secondIndex++
+      } else if (num2 > num1) {
+        currentSmallest = num2 - num1
+        firstIndex++
+      } else {
+        return [num1, num2]
+      }
+
+      if (smallest > currentSmallest) {
+        smallest = currentSmallest
+        result = [num1, num2]
+      }
+    }
+    console.log(result)
+    return result
+  }
+</script>
