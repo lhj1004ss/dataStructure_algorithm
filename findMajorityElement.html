@@ -28,4 +28,19 @@
 
     return array.length === 1 ? array[0] : result
   }
+  function majorityElement(array) {
+    let answer = null
+    let count = 0
+
+    for (const num of array) {
+      if (count === 0) {
+        answer = num
+      }
+      if (num === answer) {
+        count++
+      } else {
+        count--
+      }
+    }
+  }
 </script>
