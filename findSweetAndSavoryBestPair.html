@@ -1,0 +1,43 @@
+<script>
+  function sweetAndSavory(dishes, target) {
+    // Write your code here.
+    let sweetDishses = []
+    let savoryDishes = []
+    let sweetIdx = 0
+    let savoryIdx = 0
+    let bestdishesEver = [0, 0]
+
+    let currentBestTarget = -Infinity
+    let bestTargetEver = -Infinity
+    for (const num of dishes) {
+      if (num > 0) {
+        savoryDishes.push(num)
+      } else {
+        sweetDishses.push(num)
+      }
+    }
+
+    sweetDishses.sort((a, b) => b - a)
+    savoryDishes.sort((a, b) => a - b)
+
+    console.log(sweetDishses)
+    console.log(savoryDishes)
+
+    while (savoryIdx < savoryDishes.length && sweetIdx < sweetDishses.length) {
+      if (savoryDishes[savoryIdx] + sweetDishses[sweetIdx] <= target) {
+        currentBestTarget = savoryDishes[savoryIdx] + sweetDishses[sweetIdx]
+        if (currentBestTarget > bestTargetEver) {
+          bestdishesEver[0] = sweetDishses[sweetIdx]
+          bestdishesEver[1] = savoryDishes[savoryIdx]
+          bestTargetEver = currentBestTarget
+        }
+        savoryIdx++
+      } else {
+        sweetIdx++
+      }
+    }
+
+    console.log(bestdishesEver)
+    return bestdishesEver
+  }
+</script>
