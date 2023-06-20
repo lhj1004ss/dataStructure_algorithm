@@ -1,0 +1,31 @@
+<script>
+  function majorityElement(array) {
+    // Write your code here.
+    array.sort((a, b) => a - b)
+
+    let maxLength = 1
+    let result = 0
+    console.log(array)
+
+    let left = 0
+
+    while (left < array.length) {
+      let right = left + 1
+
+      while (array[left] === array[right] && right < array.length) {
+        right++
+      }
+
+      let currentLength = right - left
+
+      if (currentLength > maxLength) {
+        maxLength = currentLength
+        result = array[left]
+      }
+      left = right
+    }
+    console.log('result', result)
+
+    return array.length === 1 ? array[0] : result
+  }
+</script>
