@@ -1,0 +1,30 @@
+<script>
+  function mergeOverlappingIntervals(array) {
+    // Write your code here.
+
+    // array.sort((a, b) => a[0] - b[0]);
+
+    let mergedIntervals = []
+    let currentInterval = array[0]
+    mergedIntervals.push(currentInterval)
+    // console.log(mergedIntervals)
+
+    for (const nextInterval of array) {
+      const [_, currentIntervalEnd] = currentInterval
+      const [nextIntervalStart, nextIntervalEnd] = nextInterval
+      console.log(currentInterval, nextInterval)
+      if (currentIntervalEnd >= nextIntervalStart) {
+        currentInterval[1] = Math.max(currentIntervalEnd, nextIntervalEnd)
+      } else {
+        currentInterval = nextInterval
+        mergedIntervals.push(currentInterval)
+        console.log('merged', currentInterval)
+      }
+
+      // console.log(currentInterval)
+      // console.log(nextInterval
+    }
+    console.log(mergedIntervals)
+    return mergedIntervals
+  }
+</script>
