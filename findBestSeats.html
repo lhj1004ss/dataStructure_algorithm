@@ -1,0 +1,26 @@
+<script>
+  function bestSeat(seats) {
+    // Write your code here.
+
+    let left = 0
+    let maxSeats = 0
+    let seatbeat = -1
+    let seatsAvailabe = 0
+    while (left < seats.length) {
+      let right = left + 1
+
+      while (right < seats.length && seats[right] === 0) {
+        right++
+      }
+
+      seatsAvailabe = right - left - 1
+
+      if (seatsAvailabe > maxSeats) {
+        seatbeat = Math.floor((left + right) / 2)
+        maxSeats = seatsAvailabe
+      }
+      left++
+    }
+    return seatbeat
+  }
+</script>
