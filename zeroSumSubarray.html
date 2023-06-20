@@ -1,0 +1,16 @@
+<script>
+  // time: O(n), space: O(n);
+  function zeroSumSubarray(nums) {
+    // Write your code here.
+
+    let set = new Set([0])
+    // console.log(set)
+    let sum = 0
+    for (const num of nums) {
+      sum += num
+      if (set.has(sum)) return true
+      set.add(sum)
+    }
+    return false
+  }
+</script>
