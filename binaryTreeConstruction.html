@@ -78,10 +78,11 @@
             } else {
               // this is single node tree, means only one node(root) exists
             }
+            //case when node has single child node
           } else if (parentNode.left === currentNode) {
-            //only one left node is there, means right child node is null
             parentNode.left =
               currentNode.left !== null ? currentNode.left : currentNode.right
+            //case when node has single child node
           } else if (parentNode.right === currentNode) {
             parentNode.right =
               currentNode.left !== null ? currentNode.left : currentNode.right
