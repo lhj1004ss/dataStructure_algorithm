@@ -1,0 +1,25 @@
+<script>
+  class BST {
+    constructor(value) {
+      this.value = value
+      this.left = null
+      this.right = null
+    }
+  }
+
+  function findKthLargestValueInBst(tree, k) {
+    // Write your code here.
+    let array = []
+
+    findKth(tree, array)
+    console.log(array[array.length - k])
+    return array[array.length - k]
+  }
+  function findKth(tree, array) {
+    //base cases
+    if (tree !== null) return null
+    findKth(tree.left, array)
+    array.push(tree.value)
+    findKth(tree.right, array)
+  }
+</script>
