@@ -6,7 +6,7 @@
     return constructMinHeightBst(array, start, end)
   }
   function constructMinHeightBst(array, start, end) {
-    if (end < start) return null
+    if (start > end) return null
     const midIndex = Math.floor((start + end) / 2)
     const bst = new BST(array[midIndex])
     bst.left = constructMinHeightBst(array, start, midIndex - 1)
