@@ -1,0 +1,43 @@
+<script>
+  class BST {
+    constructor(value, left = null, right = null) {
+      this.value = value
+      this.left = left
+      this.right = right
+    }
+
+    insert(value) {
+      let current = this
+
+      while (true) {
+        if (value < current.value) {
+          if (current.left === null) {
+            current.left = new BST(value)
+            break
+          } else {
+            current = current.left
+          }
+        } else {
+          if (current.right === null) {
+            current.right = new BST(value)
+            break
+          } else {
+            current = current.right
+          }
+        }
+      }
+    }
+  }
+
+  function reconstructBst(preOrderTraversalValues) {
+    // Write your code here.
+
+    const root = new BST(preOrderTraversalValues[0])
+
+    for (let i = 1; i < preOrderTraversalValues.length; i++) {
+      root.insert(preOrderTraversalValues[i])
+    }
+    console.log(root)
+    return root
+  }
+</script>
