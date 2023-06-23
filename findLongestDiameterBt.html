@@ -1,0 +1,21 @@
+<script>
+  function binaryTreeDiameter(tree) {
+    // Write your code here.
+    let max = 0
+
+    function findDiameterHelper(tree) {
+      if (!tree) return 0
+
+      let left = findDiameterHelper(tree.left)
+      let right = findDiameterHelper(tree.right)
+      let currentMax = left + right
+
+      max = Math.max(max, currentMax)
+      return Math.max(left, right) + 1
+    }
+
+    findDiameterHelper(tree)
+
+    return max
+  }
+</script>
