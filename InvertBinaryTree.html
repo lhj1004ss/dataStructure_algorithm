@@ -10,6 +10,25 @@
     return tree
   }
 
+  function invertBinaryTree(tree) {
+    // Write your code here.
+
+    const stack = [tree]
+
+    while (stack.length) {
+      const current = stack.pop()
+      if (!current) continue
+      console.log('current', current)
+      let left = current.left
+
+      current.left = current.right
+      current.right = left
+
+      stack.push(current.left)
+      stack.push(current.right)
+    }
+  }
+
   // This is the class of the input binary tree.
   class BinaryTree {
     constructor(value) {
