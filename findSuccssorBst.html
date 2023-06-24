@@ -27,3 +27,42 @@
     inorder(tree.right, array)
   }
 </script>
+<script>
+  class BinaryTree {
+    constructor(value) {
+      this.value = value
+      this.left = null
+      this.right = null
+      this.parent = null
+    }
+  }
+  // time: O(height), space: O(1);
+  function findSuccessor(tree, node) {
+    // Write your code here.
+    //if there is right sub tree, get left most node(which is smallest node at right subtree);
+
+    if (node.right !== null) return getLeftMostChild(node.right)
+    return getRightMostParent(node)
+
+    // console.log(parent)
+  }
+
+  function getLeftMostChild(node) {
+    let current = node
+    while (current.left) {
+      current = current.left
+    }
+
+    return current
+  }
+  // get right non-visit parent;
+  function getRightMostParent(node) {
+    let current = node
+
+    while (current.parent !== null && current.parent.right === current) {
+      current = current.parent
+    }
+    // console.log('else222', current.parent ,'current222', current)
+    return current.parent
+  }
+</script>
