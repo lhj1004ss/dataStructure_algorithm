@@ -1,0 +1,29 @@
+<script>
+  class BinaryTree {
+    constructor(value) {
+      this.value = value
+      this.left = null
+      this.right = null
+      this.parent = null
+    }
+  }
+
+  function findSuccessor(tree, node) {
+    // Write your code here.
+
+    const array = []
+    inorder(tree, array)
+    console.log(array)
+    for (let i = 0; i < array.length; i++) {
+      if (array[i] === node) {
+        return array[i + 1]
+      }
+    }
+  }
+  function inorder(tree, array) {
+    if (!tree) return
+    inorder(tree.left, array)
+    array.push(tree)
+    inorder(tree.right, array)
+  }
+</script>
