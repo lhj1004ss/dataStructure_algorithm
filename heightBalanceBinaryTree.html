@@ -6,8 +6,8 @@
       if (!node) return 0
       const left = findBlance(node.left)
       const right = findBlance(node.right)
-      let isBalance = Math.abs(left - right) <= 1
-      if (isBalance) {
+      let isBalance = Math.abs(left - right) < 2
+      if (!isBalance) {
         result = false
       }
 
