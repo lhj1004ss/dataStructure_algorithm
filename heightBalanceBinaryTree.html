@@ -1,0 +1,20 @@
+<script>
+  function heightBalancedBinaryTree(tree) {
+    // Write your code here.
+    let result = true
+    function findBlance(node) {
+      if (!node) return 0
+      const left = findBlance(node.left)
+      const right = findBlance(node.right)
+      let isBalance = Math.abs(left - right) <= 1
+      if (isBalance) {
+        result = false
+      }
+
+      // console.log(Math.max(left, right) + 1,)
+      return Math.max(left, right) + 1
+    }
+    findBlance(tree)
+    return result
+  }
+</script>
