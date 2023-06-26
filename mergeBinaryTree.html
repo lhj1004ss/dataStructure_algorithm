@@ -12,3 +12,47 @@
     return tree1
   }
 </script>
+
+<script>
+  class BinaryTree {
+    constructor(value) {
+      this.value = value
+      this.left = null
+      this.right = null
+    }
+  }
+
+  exports.BinaryTree = BinaryTree
+
+  function mergeBinaryTrees(tree1, tree2) {
+    if (!tree1) return tree2
+
+    // Write your code here.
+    const tree1Stack = [tree1]
+    const tree2Stack = [tree2]
+
+    while (tree1Stack.length) {
+      const tree1Current = tree1Stack.pop()
+      const tree2Current = tree2Stack.pop()
+
+      if (!tree2Current) continue
+
+      tree1Current.value += tree2Current.value
+
+      if (tree1Current.left === null) {
+        tree1Current.left = tree2Current.left
+      } else {
+        tree1Stack.push(tree1Current.left)
+        tree2Stack.push(tree2Current.left)
+      }
+
+      if (tree1Current.right === null) {
+        tree1Current.right = tree2Current.right
+      } else {
+        tree1Stack.push(tree1Current.right)
+        tree2Stack.push(tree2Current.right)
+      }
+    }
+    return tree1
+  }
+</script>
