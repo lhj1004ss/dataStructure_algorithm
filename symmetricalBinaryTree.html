@@ -37,3 +37,35 @@
     return true
   }
 </script>
+
+<script>
+  /**
+   * Definition for a binary tree node.
+   * function TreeNode(val, left, right) {
+   *     this.val = (val===undefined ? 0 : val)
+   *     this.left = (left===undefined ? null : left)
+   *     this.right = (right===undefined ? null : right)
+   * }
+   */
+  /**
+   * @param {TreeNode} root
+   * @return {boolean}
+   */
+  var isSymmetric = function (root) {
+    return isMirror(root.left, root.right)
+  }
+  function isMirror(leftTree, rightTree) {
+    if (!leftTree && !rightTree) return true
+
+    if (
+      leftTree !== null &&
+      rightTree !== null &&
+      leftTree.val === rightTree.val
+    )
+      return (
+        isMirror(leftTree.left, rightTree.right) &&
+        isMirror(leftTree.right, rightTree.left)
+      )
+    return false
+  }
+</script>
