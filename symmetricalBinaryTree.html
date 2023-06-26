@@ -16,23 +16,23 @@
     const rightStack = [tree.right]
 
     while (leftStack.length) {
-      const leftNode = leftStack.pop()
-      const rightNode = rightStack.pop()
+      const leftCurrent = leftStack.pop()
+      const rightCurrent = rightStack.pop()
 
-      if (leftNode === null && rightNode === null) continue
+      if (leftCurrent === null && rightCurrent === null) continue
+      //leftCurrent === null || rightCurrent === null means if left is null , right is not null? I have to return false;
+      // because above line I put if statement handling both when both are null;
       if (
-        leftNode === null ||
-        rightNode === null ||
-        leftNode.value !== rightNode.value
+        leftCurrent === null ||
+        rightCurrent === null ||
+        leftCurrent.value !== rightCurrent.value
       )
         return false
 
-      console.log('left', leftNode, 'right', rightNode)
-      leftStack.push(leftNode.left)
-      leftStack.push(leftNode.right)
-
-      rightStack.push(rightNode.right)
-      rightStack.push(rightNode.left)
+      leftStack.push(leftCurrent.left)
+      leftStack.push(leftCurrent.right)
+      rightStack.push(rightCurrent.right)
+      rightStack.push(rightCurrent.left)
     }
     return true
   }
