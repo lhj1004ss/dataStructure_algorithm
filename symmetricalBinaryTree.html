@@ -1,0 +1,39 @@
+<script>
+  class BinaryTree {
+    constructor(value) {
+      this.value = value
+      this.left = null
+      this.right = null
+    }
+  }
+
+  exports.BinaryTree = BinaryTree
+
+  function symmetricalTree(tree) {
+    // Write your code here.
+
+    const leftStack = [tree.left]
+    const rightStack = [tree.right]
+
+    while (leftStack.length) {
+      const leftNode = leftStack.pop()
+      const rightNode = rightStack.pop()
+
+      if (leftNode === null && rightNode === null) continue
+      if (
+        leftNode === null ||
+        rightNode === null ||
+        leftNode.value !== rightNode.value
+      )
+        return false
+
+      console.log('left', leftNode, 'right', rightNode)
+      leftStack.push(leftNode.left)
+      leftStack.push(leftNode.right)
+
+      rightStack.push(rightNode.right)
+      rightStack.push(rightNode.left)
+    }
+    return true
+  }
+</script>
