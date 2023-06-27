@@ -1,0 +1,20 @@
+<script>
+  function numberOfWaysToMakeChange(n, denoms) {
+    // Write your code here.
+
+    const ways = new Array(n + 1).fill(0)
+    ways[0] = 1
+
+    for (let coin = 0; coin < denoms.length; coin++) {
+      for (let targetAmount = 1; targetAmount < ways.length; targetAmount++) {
+        // console.log(denoms[coin])
+        if (denoms[coin] <= targetAmount) {
+          ways[targetAmount] += ways[targetAmount - denoms[coin]]
+        }
+      }
+    }
+    console.log(ways)
+    console.log(n)
+    return ways[n]
+  }
+</script>
