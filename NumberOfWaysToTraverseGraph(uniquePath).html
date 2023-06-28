@@ -1,0 +1,29 @@
+<script>
+  function numberOfWaysToTraverseGraph(width, height) {
+    // Write your code here.
+
+    const table = []
+
+    for (let i = 0; i < height + 1; i++) {
+      const row = []
+      for (let j = 0; j < width + 1; j++) {
+        row.push(0)
+      }
+      table.push(row)
+    }
+    console.log(table)
+    for (let widthIdx = 1; widthIdx < width + 1; widthIdx++) {
+      for (let heightIdx = 1; heightIdx < height + 1; heightIdx++) {
+        if (widthIdx === 1 || heightIdx === 1) {
+          table[heightIdx][widthIdx] = 1
+        } else {
+          const left = table[heightIdx][widthIdx - 1]
+          const up = table[heightIdx - 1][widthIdx]
+          table[heightIdx][widthIdx] = left + up
+        }
+      }
+    }
+    console.log(table)
+    return table[height][width]
+  }
+</script>
