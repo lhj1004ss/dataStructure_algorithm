@@ -27,3 +27,18 @@
     return table[height][width]
   }
 </script>
+
+<script>
+  function numberOfWaysToTraverseGraph(width, height) {
+    // Write your code here.
+    // row or first column
+    if (width == 1 || height == 1) return 1
+
+    // Recursively find the no of
+    // way to reach the last cell.
+    return (
+      numberOfWaysToTraverseGraph(width - 1, height) +
+      numberOfWaysToTraverseGraph(width, height - 1)
+    )
+  }
+</script>
