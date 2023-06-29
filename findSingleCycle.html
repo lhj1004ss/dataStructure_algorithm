@@ -1,0 +1,24 @@
+<script>
+  function hasSingleCycle(array) {
+    // Write your code here.
+
+    let numberElementVisited = 0
+    let currentIndex = 0
+
+    while (numberElementVisited < array.length) {
+      // this means it's multiple cycle in the array because numVisited >0  means passing first array
+      if (numberElementVisited > 0 && currentIndex === 0) return false
+      numberElementVisited++
+
+      currentIndex = getNextIndex(currentIndex, array)
+    }
+    console.log(numberElementVisited)
+    return currentIndex === 0
+  }
+  function getNextIndex(currentIndex, array) {
+    let jump = array[currentIndex]
+    let nextIndex = (currentIndex + jump) % array.length
+    console.log(currentIndex, array[currentIndex], 'jump', nextIndex)
+    return nextIndex < 0 ? nextIndex + array.length : nextIndex
+  }
+</script>
