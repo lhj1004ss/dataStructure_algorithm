@@ -1,0 +1,15 @@
+<script>
+  function kadanesAlgorithm(array) {
+    // Write your code here.
+
+    let maxEnding = array[0]
+    let allTimeMax = array[0]
+
+    for (let i = 1; i < array.length; i++) {
+      maxEnding = Math.max(array[i], array[i] + maxEnding)
+
+      allTimeMax = Math.max(allTimeMax, maxEnding)
+    }
+    return allTimeMax
+  }
+</script>
