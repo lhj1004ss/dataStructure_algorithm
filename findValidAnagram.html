@@ -30,3 +30,21 @@
   // validAnagram("rat","car") //false;
   validAnagram('qwerty', 'qeywrt') //true;
 </script>
+
+<script>
+  function validAnagram(str1, str2) {
+    let str1Map = {}
+    let str2Map = {}
+    for (const str of str1) {
+      str1Map[str] = (str1Map[str] || 0) + 1
+    }
+    for (let i = 0; i < str2.length; i++) {
+      if (!str1Map[str2[i]]) {
+        return false
+      } else {
+        str1Map[str2[i]]--
+      }
+    }
+    return true
+  }
+</script>
