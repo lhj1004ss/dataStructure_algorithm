@@ -1,0 +1,39 @@
+<script>
+  // function MaxSum(arr,num){
+  //     let max = -Infinity
+
+  //     for(let i = 0; i < arr.length - num + 1; i++){
+  //         let temp = 0;
+  //         for(let j = 0; j < num ; j++){
+  //             temp +=  arr[i+j]
+  //         }
+  //         if(temp > max){
+  //             max = temp;
+  //         }
+  //     }
+  //     return max
+  // }
+
+  function slidingWindowMaxSum(arr, num) {
+    let tempSum = 0
+    let maxSum = 0
+
+    for (let i = 0; i < num; i++) {
+      maxSum += arr[i]
+    }
+    console.log('max', maxSum)
+
+    tempSum = maxSum
+    for (let i = num; i < arr.length; i++) {
+      tempSum = tempSum - arr[i - num] + arr[i]
+      // console.log('tempsum',tempSum)
+
+      maxSum = Math.max(tempSum, maxSum)
+      console.log(maxSum, tempSum)
+    }
+    console.log(maxSum)
+    return maxSum
+  }
+
+  slidingWindowMaxSum([2, 6, 9, 2, 1, 8, 5, 6, 3], 3)
+</script>
