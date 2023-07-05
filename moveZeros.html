@@ -31,19 +31,19 @@ Constraints:
     //if not find zero, increment zero pointer
     //time:O(n) space: O(1)
     if (nums.length < 2) return nums
-    let findZero = 0
-    let findNonZero = 1
+    let left = 0
+    let right = 1
 
-    while (findNonZero < nums.length) {
-      if (nums[findZero] !== 0) {
-        findNonZero++
-        findZero++
-      } else if (nums[findNonZero] === 0) {
-        findNonZero++
+    while (right < nums.length) {
+      if (nums[left] !== 0) {
+        right++
+        left++
+      } else if (nums[right] === 0) {
+        right++
       } else {
-        let temp = nums[findZero]
-        nums[findZero] = nums[findNonZero]
-        nums[findNonZero] = temp
+        let temp = nums[left]
+        nums[left] = nums[right]
+        nums[right] = temp
       }
     }
 
