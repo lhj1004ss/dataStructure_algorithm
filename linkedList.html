@@ -1,14 +1,42 @@
 <script>
   class Node {
-    constructor(data) {
-      this.data = data
+    constructor(val) {
+      this.val = val
       this.next = null
     }
   }
 
-  let head = new Node('a')
-  head.next = new Node('b')
-  head.next.next = new Node('c')
-  head.next.next.next = new Node('d')
-  console.log(head)
+  let head = new Node('1')
+  head.next = new Node('4')
+  head.next.next = new Node('3')
+  head.next.next.next = new Node('2')
+  head.next.next.next.next = new Node('5')
+  head.next.next.next.next.next = new Node('2')
+  head.next.next.next.next.next.next = new Node('1')
+
+  console.log('head', head)
+  function partition(head, target) {
+    let leftDummy = new Node(null)
+    let rightDummy = new Node(null)
+    let leftPointer = leftDummy
+    let rightPointer = rightDummy
+
+    while (head) {
+      console.log(head.val)
+      if (head.val < target) {
+        leftPointer.next = head
+        leftPointer = leftPointer.next
+      } else {
+        rightPointer.next = head
+        rightPointer = rightPointer.next
+      }
+      head = head.next
+    }
+    leftPointer.next = rightDummy.next
+    rightPointer.next = null
+
+    console.log('left', rightPointer.next)
+    // console.log(leftDummy.next)
+  }
+  partition(head, 3)
 </script>
