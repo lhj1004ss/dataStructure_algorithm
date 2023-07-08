@@ -1,0 +1,360 @@
+<script>
+  // function test(str) {
+  // let splittedString = str.split('')
+  // let left = 0
+  // let right = splittedString.length - 1
+  // console.log(left, right, splittedString)
+
+  // console.log(splittedString[left], splittedString[right])
+  // while (left <= right) {
+  //   let temp = splittedString[left]
+  //   splittedString[left] = splittedString[right]
+  //   splittedString[right] = temp
+  //   left++
+  //   right--
+  // }
+  // console.log(splittedString.join(''))
+
+  //   let reversedString = ''
+  //   for (let i = str.length - 1; i >= 0; i--) {
+  //     reversedString += str[i]
+  //   }
+  //   console.log(reversedString)
+  // }
+
+  // test('I love java')
+
+  function test5(prevMove, move, scores, index) {
+    const result = compareMoves(prevMove, move)
+
+    // Update scores based on the comparison result
+    if (result === 1) {
+      updateScore(scores, index, 0)
+    } else if (result === -1) {
+      updateScore(scores, index, 1)
+    }
+  }
+
+  function adjudicateWithTime(movesWithTime) {
+    /*
+  Adjudicates a game of rock-paper-scissors based on move history with timestamps.
+  
+  Arguments:
+  movesWithTime -- Array of moves with timestamps (array of objects):
+    [
+      { move: 'rock', time: '2023-07-06T12:00:00Z' },
+      { move: 'paper', time: '2023-07-06T12:01:00Z' },
+      ...
+    ]
+  
+  Returns:
+  scores -- Scores of the players (array of objects):
+    [
+      { player: 1, score: 0 },
+      { player: 2, score: 1 },
+      ...
+    ]
+  */
+
+    // Sort moves by time in ascending order
+    movesWithTime.sort((a, b) => new Date(a.time) - new Date(b.time))
+
+    // Initialize scores
+    const scores = []
+
+    // Iterate over moves
+    for (let i = 0; i < movesWithTime.length; i++) {
+      const move = movesWithTime[i].move
+      const time = movesWithTime[i].time
+
+      // Store the initial score for the current move
+      scores.push({ player: i, score: 0, time })
+      // Compare with the preceding move (if available)
+      if (i > 0) {
+        const prevMove = movesWithTime[i - 1].move
+
+        test5(prevMove, move, scores, i)
+        // const result = compareMoves(prevMove, move)
+
+        // // Update scores based on the comparison result
+        // if (result === 1) {
+        //   updateScore(scores, i, 0)
+        // } else if (result === -1) {
+        //   updateScore(scores, i, 1)
+        // }
+      } else {
+        const prevMove = movesWithTime[i + 1].move
+        console.log('pre', prevMove)
+        const result = compareMoves(prevMove, move)
+
+        // Update scores based on the comparison result
+        if (result === 1) {
+          updateScore(scores, i, 0)
+        } else if (result === -1) {
+          updateScore(scores, i, 1)
+        }
+      }
+    }
+    // console.log(scores)
+    return scores
+  }
+
+  function compareMoves(move1, move2) {
+    /*
+  Compares two moves and determines the result.
+  
+  Arguments:
+  move1 -- Move of player 1 (string): 'rock', 'paper', or 'scissors'
+  move2 -- Move of player 2 (string): 'rock', 'paper', or 'scissors'
+  
+  Returns:
+  result -- Result of the comparison (number):
+    1: move1 wins
+    -1: move2 wins
+    0: tie
+  */
+
+    if (move1 === move2) {
+      return 0 // Tie
+    }
+
+    if (
+      (move1 === 'rock' && move2 === 'scissors') ||
+      (move1 === 'paper' && move2 === 'rock') ||
+      (move1 === 'scissors' && move2 === 'paper')
+    ) {
+      return 1 // move1 wins
+    }
+
+    return -1 // move2 wins
+  }
+
+  function updateScore(scores, index, player) {
+    /*
+  Updates the score of the specified player.
+  
+  Arguments:
+  scores -- Scores array (array of objects)
+  index -- Index of the player's score in the scores array
+  player -- Player number (number)
+  */
+
+    scores[index].score += player
+  }
+
+  const movewith = [
+    { move: 'scissors', time: '2023-07-06T12:00:00Z' },
+    { move: 'paper', time: '2023-07-06T12:01:00Z' },
+    { move: 'scissors', time: '2023-07-06T12:02:00Z' },
+    { move: 'paper', time: '2023-07-06T12:02:00Z' },
+
+    // Add more moves here...
+  ]
+
+  const test = adjudicateWithTime(movewith)
+
+  console.log(test)
+</script>
+
+<script>
+  // function adjudicate(user1, user2) {
+  //   if (user1 === user2) {
+  //     return console.log('tie')
+  //   }
+
+  //   if (user1 === 'rock') {
+  //     if (user2 === 'scissors') {
+  //       return console.log('user1 winner')
+  //     } else {
+  //       return console.log('user2 winner')
+  //     }
+  //   }
+
+  //   if (user1 === 'paper') {
+  //     if (user2 === 'rock') {
+  //       return console.log('user1 winner')
+  //     } else {
+  //       return console.log('user2 winner')
+  //     }
+  //   }
+
+  //   if (user1 === 'scissors') {
+  //     if (user2 === 'paper') {
+  //       return console.log('user1 winnwer')
+  //     } else {
+  //       return console.log('user2 winner')
+  //     }
+  //   }
+  // }
+  // function adjudicate(player1_move, player2_move) {
+  //   /*
+  // Adjudicates a game of rock-paper-scissors and determines the winner.
+
+  // Arguments:
+  // player1_move -- Move of player 1 (string): 'rock', 'paper', or 'scissors'
+  // player2_move -- Move of player 2 (string): 'rock', 'paper', or 'scissors'
+
+  // Returns:
+  // result -- Result of the game (string): 'Player 1 wins', 'Player 2 wins', or "It's a tie"
+  // */
+
+  //   if (player1_move === player2_move) {
+  //     return "It's a tie"
+  //   }
+
+  //   if (player1_move === 'rock') {
+  //     if (player2_move === 'paper') {
+  //       return 'Player 2 wins'
+  //     } else {
+  //       return 'Player 1 wins'
+  //     }
+  //   }
+
+  //   if (player1_move === 'paper') {
+  //     if (player2_move === 'scissors') {
+  //       return 'Player 2 wins'
+  //     } else {
+  //       return 'Player 1 wins'
+  //     }
+  //   }
+
+  //   if (player1_move === 'scissors') {
+  //     if (player2_move === 'rock') {
+  //       return 'Player 2 wins'
+  //     } else {
+  //       return 'Player 1 wins'
+  //     }
+  //   }
+  // }
+</script>
+
+<script>
+  function adjudicateWithTime(movesWithTime) {
+    if (movesWithTime.length < 2) return false
+
+    movesWithTime.sort((a, b) => new Date(a.time) - new Date(b.time))
+
+    let scores = []
+
+    for (let i = 0; i < movesWithTime.length; i++) {
+      const move = movesWithTime[i].move
+      const time = movesWithTime[i].time
+
+      // initial value
+      scores.push({ move, time, score: 0 })
+      if (0 < i) {
+        const result = getResult(
+          movesWithTime[i - 1].move,
+          movesWithTime[i].move
+        )
+        if (result) {
+          scores[i].score++
+        } else {
+          scores[i].score++
+        }
+      }
+    }
+    console.log('second', scores)
+  }
+
+  function getResult(move1, move2) {
+    if (
+      (move1 === 'rock' && move2 === 'scissor') ||
+      (move1 === 'scissor' && move2 === 'paper') ||
+      (move1 === 'paper' && move2 === 'rock')
+    ) {
+      //win returns  true
+      return true
+    } else {
+      //lose returns
+      return false
+    }
+  }
+  const movesWithTime = [
+    { move: 'rock', time: '2023-07-06T12:00:00Z' },
+    { move: 'paper', time: '2023-07-06T12:01:00Z' },
+    { move: 'scissors', time: '2023-07-06T12:02:00Z' },
+    { move: 'paper', time: '2023-07-06T12:02:00Z' },
+    // Add more moves here...
+  ]
+  const test2 = adjudicateWithTime(movesWithTime)
+</script>
+<script>
+  const moves = [
+    { move: 'scissors', time: '2023-07-06T12:00:00Z' },
+    {
+      move: 'paper',
+      time: '2023-07-06T12:01:00Z',
+    },
+    { move: 'scissors', time: '2023-07-06T12:02:00Z' },
+    { move: 'paper', time: '2023-07-06T12:03:00Z' },
+  ]
+  const test3 = adjudicateWithTime(moves)
+
+  function getResult(firstMove, secondMove) {
+    if (
+      (firstMove === 'rock' && secondMove === 'scissors') ||
+      (firstMove === 'scissors' && secondMove === 'paper') ||
+      (firstMove === 'paper' && secondMove === 'rock')
+    ) {
+      return true
+    } else {
+      return false
+    }
+  }
+  function updateScore(firstMove, secondMove, time) {
+    const result = getResult(firstMove, secondMove)
+    if (result) {
+      scoreBoard.push({ move: firstMove, score: 1, time })
+    } else {
+      scoreBoard.push({ move: firstMove, score: 0, time })
+    }
+  }
+  function adjudicateWithTime(moves) {
+    moves.sort((a, b) => a - b)
+
+    scoreBoard = []
+
+    for (let i = 0; i < moves.length; i++) {
+      let currentMove = moves[i].move
+      let time = moves[i].time
+
+      if (0 < i) {
+        let preMove = moves[i - 1].move
+        // const result = getResult(currentMove, preMove)
+        updateScore(currentMove, preMove, time)
+        // if (result) {
+        //   scoreBoard.push({ move: currentMove, score: 1, time })
+        // } else {
+        //   scoreBoard.push({ move: currentMove, score: 0, time })
+        // }
+      } else {
+        let nextMove = moves[i + 1].move
+        updateScore(currentMove, nextMove, time)
+
+        // const result = getResult(currentMove, nextMove)
+        // if (result) {
+        //   scoreBoard.push({ move: currentMove, score: 1, time })
+        // } else {
+        //   scoreBoard.push({ move: currentMove, score: 0, time })
+        // }
+      }
+    }
+    console.log(scoreBoard)
+  }
+
+  function reverseStr(str) {
+    const splittedStr = str.split('')
+    let left = 0
+    let right = splittedStr.length - 1
+    while (left < right) {
+      let temp = splittedStr[left]
+      splittedStr[left] = splittedStr[right]
+      splittedStr[right] = temp
+      left++
+      right--
+    }
+    console.log(splittedStr.join(''))
+  }
+  reverseStr('I love JAVA')
+</script>

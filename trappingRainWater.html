@@ -1,0 +1,29 @@
+<script>
+  /**
+   * @param {number[]} height
+   * @return {number}
+   */
+
+  //time: O(n), space: O(n); two pointers
+  // water = min(left-right) - height[i]
+  var trap = function (height) {
+    let left = 0
+    let right = height.length - 1
+
+    let maxLeft = height[left]
+    let maxRight = height[right]
+    let count = 0
+    while (left < right) {
+      if (height[left] < height[right]) {
+        left++
+        maxLeft = Math.max(maxLeft, height[left])
+        count += maxLeft - height[left]
+      } else {
+        right--
+        maxRight = Math.max(maxRight, height[right])
+        count += maxRight - height[right]
+      }
+    }
+    return count
+  }
+</script>
