@@ -1,0 +1,38 @@
+<script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val, next) {
+   *     this.val = (val===undefined ? 0 : val)
+   *     this.next = (next===undefined ? null : next)
+   * }
+   */
+  /**
+   * @param {ListNode} head
+   * @return {ListNode}
+   */
+  var deleteDuplicates = function (head) {
+    const map = new Map()
+    let current = head
+    while (current && current.next) {
+      if (current.val === current.next.val) {
+        map.set(current.val, '')
+      }
+      current = current.next
+    }
+
+    console.log(map)
+
+    const dummy = new ListNode()
+    dummy.next = head
+    current = dummy
+
+    while (current && current.next) {
+      if (map.has(current.next.val)) {
+        current.next = current.next.next
+      } else {
+        current = current.next
+      }
+    }
+    return dummy.next
+  }
+</script>
