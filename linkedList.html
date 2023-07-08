@@ -1,0 +1,14 @@
+<script>
+  class Node {
+    constructor(data) {
+      this.data = data
+      this.next = null
+    }
+  }
+
+  let head = new Node('a')
+  head.next = new Node('b')
+  head.next.next = new Node('c')
+  head.next.next.next = new Node('d')
+  console.log(head)
+</script>

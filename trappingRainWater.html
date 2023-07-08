@@ -3,6 +3,30 @@
    * @param {number[]} height
    * @return {number}
    */
+  /**
+   * @param {number[]} height
+   * @return {number}
+   */
+
+  //time: O(n2), space: O(1)
+  var trap = function (height) {
+    let waterContainer = 0
+    for (let i = 1; i < height.length - 1; i++) {
+      let leftMax = height[i]
+      for (let j = 0; j < i; j++) {
+        leftMax = Math.max(leftMax, height[j])
+      }
+
+      let rightMax = height[i]
+
+      for (let j = i + 1; j < height.length; j++) {
+        rightMax = Math.max(rightMax, height[j])
+      }
+
+      waterContainer += Math.min(rightMax, leftMax) - height[i]
+    }
+    return waterContainer
+  }
 
   //time: O(n), space: O(n); two pointers
   // water = min(left-right) - height[i]
