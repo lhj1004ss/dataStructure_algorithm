@@ -16,14 +16,19 @@
     while (left < right) {
       if (height[left] < height[right]) {
         left++
+        if (maxLeft - height[left] > 0) {
+          count += maxLeft - height[left]
+        }
         maxLeft = Math.max(maxLeft, height[left])
-        count += maxLeft - height[left]
       } else {
         right--
+        if (maxRight - height[right] > 0) {
+          count += maxRight - height[right]
+        }
         maxRight = Math.max(maxRight, height[right])
-        count += maxRight - height[right]
       }
     }
+
     return count
   }
 </script>
