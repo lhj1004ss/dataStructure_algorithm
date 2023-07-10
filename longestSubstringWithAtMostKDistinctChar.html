@@ -1,21 +1,20 @@
 <script>
   function lengthOfLongestSubstringDistinct(str, k) {
     let map = new Map()
+
     let left = 0
     let right = 0
     let maxLength = 0
     while (right < str.length) {
       if (map.has(str[right])) {
-        // increaee
         map.set(str[right], map.get(str[right]) + 1)
       } else {
-        // set default
         map.set(str[right], 1)
       }
 
-      if (map.size > k) {
+      if (map.size > 3) {
         if (map.get(str[left]) > 1) {
-          map.set(map.get(str[left]) - 1)
+          map.set(map.get(str[left] - 1))
         } else {
           map.delete(map.get(str[left]))
         }
@@ -24,9 +23,7 @@
       maxLength = Math.max(maxLength, right - left + 1)
       right++
     }
-    console.log(map)
-    console.log(maxLength)
+    console.log('he?', maxLength)
   }
-
-  lengthOfLongestSubstringDistinct('aa', 2)
+  lengthOfLongestSubstringDistinct('eceba')
 </script>
