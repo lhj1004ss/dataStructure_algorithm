@@ -1,0 +1,31 @@
+<script>
+  function longest(str, k) {
+    let left = 0
+    let right = 0
+    let map = new Map()
+    let maxLength = 0
+    while (right < str.length) {
+      if (map.has(str[right])) {
+        map.set(str[right], map.get(str[right] + 1))
+      } else {
+        map.set(str[right], 1)
+      }
+
+      if (map.size > k) {
+        if (map.get(str[left]) > 1) {
+          map.set(str[left], map.get(str[left] - 1))
+        } else {
+          map.delete(str[left])
+        }
+        left++
+      }
+      maxLength = Math.max(maxLength, right - left + 1)
+
+      right++
+    }
+    console.log(maxLength)
+    return maxLength
+  }
+
+  longest('aa', 2)
+</script>
