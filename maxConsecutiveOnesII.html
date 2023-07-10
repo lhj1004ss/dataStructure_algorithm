@@ -1,0 +1,32 @@
+<!-- allow one zero to flip 1 to get max length of consecutive 1 -->
+
+<script>
+  function maxConsecutiveOnes(nums) {
+    let left = 0
+    let right = 0
+    let maxLength = -Infinity
+    let count = 0
+
+    while (right < nums.length) {
+      if (nums[right] === 0) {
+        count++
+      }
+
+      while (count > 1) {
+        if (nums[left] === 0) {
+          count--
+        }
+        left++
+      }
+      maxLength = Math.max(maxLength, right - left + 1)
+      right++
+    }
+
+    return maxLength
+  }
+  maxConsecutiveOnes([1, 0, 0, 0, 1, 1, 1])
+  // maxConsecutiveOnes([1, 0, 1, 1])
+
+  // output should be 4,
+  // 1,1,1,1
+</script>
