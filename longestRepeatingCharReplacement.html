@@ -1,0 +1,36 @@
+<script>
+  /**
+   * @param {string} s
+   * @param {number} k
+   * @return {number}
+   */
+  var characterReplacement = function (s, k) {
+    let left = 0
+    let right = 0
+    let maxLength = 0
+    let largestValue = 0
+    let map = new Map()
+
+    while (right < s.length) {
+      if (map.has(s[right])) {
+        map.set(s[right], map.get(s[right]) + 1)
+      } else {
+        map.set(s[right], 1)
+      }
+
+      // O(26n) time complexity
+      // largestValue = Math.max(...map.values())
+      // O(n) time complexity;
+      largestValue = Math.max(largestValue, map.get(s[right]))
+
+      // invalid check
+      while (right - left + 1 - largestValue > k) {
+        map.set(s[left], map.get(s[left]) - 1)
+        left++
+      }
+      maxLength = Math.max(maxLength, right - left + 1)
+      right++
+    }
+    return maxLength
+  }
+</script>

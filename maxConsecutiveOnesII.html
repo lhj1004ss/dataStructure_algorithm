@@ -2,30 +2,29 @@
 
 <script>
   function maxConsecutiveOnes(nums) {
-    let left = 0
-    let right = 0
-    let maxLength = -Infinity
     let count = 0
+    let maxLength = 0
+    let right = 0
+    let left = 0
 
     while (right < nums.length) {
       if (nums[right] === 0) {
         count++
       }
-
       while (count > 1) {
         if (nums[left] === 0) {
           count--
         }
         left++
+        console.log(left, right)
       }
       maxLength = Math.max(maxLength, right - left + 1)
       right++
     }
-
-    return maxLength
+    console.log(maxLength)
   }
-  maxConsecutiveOnes([1, 0, 0, 0, 1, 1, 1])
-  // maxConsecutiveOnes([1, 0, 1, 1])
+  // maxConsecutiveOnes([1, 0, 0, 0, 0, 1, 1, 1])
+  maxConsecutiveOnes([1, 0, 0, 1, 1, 0])
 
   // output should be 4,
   // 1,1,1,1
