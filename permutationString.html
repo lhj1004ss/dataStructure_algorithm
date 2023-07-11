@@ -1,0 +1,55 @@
+<!-- Given two strings s1 and s2, return true if s2 contains a permutation of s1, or false otherwise.
+
+In other words, return true if one of s1's permutations is the substring of s2.
+
+ 
+
+Example 1:
+
+Input: s1 = "ab", s2 = "eidbaooo"
+Output: true
+Explanation: s2 contains one permutation of s1 ("ba").
+Example 2:
+
+Input: s1 = "ab", s2 = "eidboaoo"
+Output: false
+ -->
+<script>
+  /**
+   * @param {string} s1
+   * @param {string} s2
+   * @return {boolean}
+   */
+  // time: O(s1*s2) , space: O(1); as alphabets only takes 26 char
+  var checkInclusion = function (s1, s2) {
+    let map = new Map()
+
+    for (let i = 0; i < s1.length; i++) {
+      if (map.has(s1[i])) {
+        map.set(s1[i], map.get(s1[i]) + 1)
+      } else {
+        map.set(s1[i], 1)
+      }
+    }
+
+    for (let i = 0; i <= s2.length - s1.length; i++) {
+      let temp = new Map(map)
+      console.log(temp)
+      let j = 0
+      for (j = i; j < i + s1.length; j++) {
+        let char = s2[j]
+        if (temp.has(char) && temp.get(char) > 0) {
+          temp.set(char, temp.get(char) - 1)
+        } else {
+          break
+        }
+      }
+      if (j === i + s1.length) {
+        console.log(s2[j])
+        console.log(j, i, s1.length)
+        return true
+      }
+    }
+    return false
+  }
+</script>
