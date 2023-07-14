@@ -19,15 +19,12 @@ Example 3:
 Input: nums = [], target = 0
 Output: [-1,-1] -->
 <script>
-  /**
-   * @param {number[]} nums
-   * @param {number} target
-   * @return {number[]}
-   *
-   *
-   *  time: O(logn) , space:O(1) /
+  //  *  time: O(logn) , space:O(1)
+
   var searchRange = function (nums, target) {
+    // if true ,search left most index that is equal to target
     let left = helperBin(nums, target, true)
+    // if true ,search right most index that is equal to target
     let right = helperBin(nums, target, false)
     return [left, right]
   }
