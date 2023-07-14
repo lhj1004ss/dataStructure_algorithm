@@ -38,7 +38,7 @@
     let maxRight = height[right]
     let count = 0
     while (left < right) {
-      if (height[left] < height[right]) {
+      if (maxLeft < maxRight) {
         left++
         if (maxLeft - height[left] > 0) {
           count += maxLeft - height[left]
