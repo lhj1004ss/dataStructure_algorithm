@@ -1,0 +1,52 @@
+<!-- Given the head of a singly linked list, return true if it is a 
+palindrome
+ or false otherwise.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,2,1]
+Output: true
+Example 2:
+
+
+Input: head = [1,2]
+Output: false -->
+
+<script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val, next) {
+   *     this.val = (val===undefined ? 0 : val)
+   *     this.next = (next===undefined ? null : next)
+   * }
+   */
+  /**
+   * @param {ListNode} head
+   * @return {boolean}
+   */
+  var isPalindrome = function (head) {
+    let res = []
+
+    let current = head
+
+    while (current) {
+      res.push(current.val)
+      current = current.next
+    }
+    console.log(res)
+    let left = 0
+    let right = res.length - 1
+
+    while (left < right) {
+      if (res[left] !== res[right]) {
+        return false
+      }
+      left++
+      right--
+    }
+    return true
+  }
+</script>
