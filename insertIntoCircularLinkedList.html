@@ -1,0 +1,43 @@
+<script>
+  /**
+   * // Definition for a Node.
+   * function Node(val,next) {
+   *    this.val = val;
+   *    this.next = next;
+   * };
+   */
+
+  /**
+   * @param {Node} head
+   * @return {Node}
+   */
+  // time:O(n), space:O(1)
+  var insert = function (head, insertVal) {
+    if (head === null) {
+      let newHead = ListNode(insertVal)
+      newHead.next = newHead
+    }
+    let current = head
+    // iterate just before head
+    while (current.next !== head) {
+      if (current.val <= insertVal && insertVal <= current.next.val) {
+        let newHead = ListNode(insertVal)
+        current.next = newHead
+        return head
+      } else if (current.val > current.next.val) {
+        //insert minimum val or maximum val
+        if (insertVal >= current.val || intertVal <= current.next.val) {
+          let newHead = ListNode(insertVal)
+          current.next = newHead
+          return head
+        }
+      }
+      current = current.next
+    }
+
+    // all value at node are equal
+    let newHead = ListNode(insertVal)
+    current.next = newHead
+    return head
+  }
+</script>
