@@ -1,0 +1,63 @@
+<!-- Given the head of a linked list, rotate the list to the right by k places.
+
+ 
+
+Example 1:
+
+
+Input: head = [1,2,3,4,5], k = 2
+Output: [4,5,1,2,3]
+Example 2:
+
+
+Input: head = [0,1,2], k = 4
+Output: [2,0,1] -->
+
+<script>
+  /**
+   * Definition for singly-linked list.
+   * function ListNode(val, next) {
+   *     this.val = (val===undefined ? 0 : val)
+   *     this.next = (next===undefined ? null : next)
+   * }
+   */
+  /**
+   * @param {ListNode} head
+   * @param {number} k
+   * @return {ListNode}
+   */
+  var rotateRight = function (head, k) {
+    //base case
+
+    // pointers
+    let dummy = new ListNode()
+    let prev = dummy
+    prev.next = head
+    current = head
+    let length = 0
+
+    while (current) {
+      length++
+      prev = current
+      current = current.next
+    }
+
+    // set circular linkedlist
+    current = head
+    prev.next = current
+
+    //how many rotate?
+    let rotation = k % length
+    let lotation = length - rotation
+
+    // find new head
+    for (let i = 0; i < lotation; i++) {
+      prev = current
+      current = current.next
+    }
+
+    // delete connection(circulr linkedlist)
+    prev.next = null
+    return current
+  }
+</script>

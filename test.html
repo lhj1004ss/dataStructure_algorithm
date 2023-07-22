@@ -358,3 +358,17 @@
   }
   reverseStr('I love JAVA')
 </script>
+
+<script>
+  function calculateValue(n) {
+    let currentValue = n
+    let sum = 0
+    for (let i = 0; i < n; i++) {
+      sum += currentValue * currentValue
+    }
+
+    console.log('sum', sum % 100)
+    return sum
+  }
+  calculateValue(30)
+</script>
