@@ -27,7 +27,9 @@ Output: [2,0,1] -->
    * @return {ListNode}
    */
   var rotateRight = function (head, k) {
+    // time: O(n), space: O(1)
     //base case
+    if (head === null || head.next === null) return head
 
     // pointers
     let dummy = new ListNode()
