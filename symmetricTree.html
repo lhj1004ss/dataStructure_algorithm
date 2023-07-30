@@ -27,6 +27,7 @@ Output: false
    * @param {TreeNode} root
    * @return {boolean}
    */
+  //  time: O(n) space: O(h) h is height of tree
   var isSymmetric = function (root) {
     if (!root.left && !root.right) return true
 
@@ -53,5 +54,35 @@ Output: false
       rightStack.push(rightNode.left)
     }
     return true
+  }
+</script>
+
+<script>
+  /**
+   * Definition for a binary tree node.
+   * function TreeNode(val, left, right) {
+   *     this.val = (val===undefined ? 0 : val)
+   *     this.left = (left===undefined ? null : left)
+   *     this.right = (right===undefined ? null : right)
+   * }
+   */
+  /**
+   * @param {TreeNode} root
+   * @return {boolean}
+   */
+  //  time: O(n) space: O(h) h is height of tree
+
+  var isSymmetric = function (root) {
+    function bfs(leftSubTree, rightSubTree) {
+      if (!leftSubTree && !rightSubTree) return true
+      if ((leftSubTree && !rightSubTree) || (!leftSubTree && rightSubTree))
+        return false
+      return (
+        leftSubTree.val === rightSubTree.val &&
+        bfs(leftSubTree.left, rightSubTree.right) &&
+        bfs(leftSubTree.right, rightSubTree.left)
+      )
+    }
+    return bfs(root.left, root.right)
   }
 </script>
