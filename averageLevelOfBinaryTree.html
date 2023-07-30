@@ -12,24 +12,24 @@
    * @return {number[]}
    */
   var averageOfLevels = function (root) {
-    let queue = [root]
-    let childQueue = []
-    const avg = []
+    if (!root) return []
+    const queue = [root]
+    const res = []
 
     while (queue.length) {
-      const currentLength = queue.length
+      let length = queue.length
       let sum = 0
+      // const avg = 0;
 
-      for (const current of queue) {
-        sum += current.val
-
-        if (current.left) childQueue.push(current.left)
-        if (current.right) childQueue.push(current.right)
+      for (let i = 0; i < length; i++) {
+        const node = queue.shift()
+        sum += node.val
+        if (node.left) queue.push(node.left)
+        if (node.right) queue.push(node.right)
       }
-      avg.push(sum / currentLength)
-      queue = childQueue
-      childQueue = []
+
+      res.push(sum / length)
     }
-    return avg
+    return res
   }
 </script>
